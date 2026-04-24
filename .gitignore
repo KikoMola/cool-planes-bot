@@ -1,0 +1,36 @@
+# Dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Variables de entorno (contienen tokens y datos sensibles)
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+
+# Scripts de prueba / dry-run (no necesarios en producción)
+src/dry-run.ts
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Sistema operativo
+Thumbs.db
