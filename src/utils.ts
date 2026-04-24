@@ -27,6 +27,8 @@ export function getPlaneName(type: string): string {
         A346: 'Airbus A340-600',
         A345: 'Airbus A340-500',
         B777: 'Boeing 777',
+        B777L: 'Boeing 777-L',
+        B777F: 'Boeing 777-F',
         B772: 'Boeing 777-200',
         B773: 'Boeing 777-300',
         B77W: 'Boeing 777-300ER',
