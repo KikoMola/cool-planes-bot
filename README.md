@@ -14,15 +14,15 @@ Este bot consulta cada **5 minutos** la API gratuita de [ADSB.lol](https://adsb.
 
 ### 🛩️ Aviones que detecta
 
-| Tipo | Avión |
-|------|-------|
-| `A380` / `A388` | Airbus A380 |
-| `B74x` | Boeing 747 (toda la familia) |
-| `B78x` | Boeing 787 Dreamliner |
-| `A35x` | Airbus A350 |
-| `A340` / `A346` | Airbus A340 |
-| `B77x` | Boeing 777 |
-| **`B763`** | **Boeing 767-300** *(¡tu UPS de Manises!)* |
+| Tipo            | Avión                                      |
+| --------------- | ------------------------------------------ |
+| `A380` / `A388` | Airbus A380                                |
+| `B74x`          | Boeing 747 (toda la familia)               |
+| `B78x`          | Boeing 787 Dreamliner                      |
+| `A35x`          | Airbus A350                                |
+| `A340` / `A346` | Airbus A340                                |
+| `B77x`          | Boeing 777                                 |
+| **`B763`**      | **Boeing 767-300** _(¡tu UPS de Manises!)_ |
 
 ---
 
@@ -140,11 +140,11 @@ plane-bot/
 
 ## ⚙️ Scripts disponibles
 
-| Script | Descripción |
-|--------|-------------|
-| `npm run build` | Compila TypeScript a JavaScript (`dist/`) |
-| `npm start` | Ejecuta el bot compilado |
-| `npm run dev` | Ejecuta el bot directamente con `ts-node` (para desarrollo) |
+| Script          | Descripción                                                 |
+| --------------- | ----------------------------------------------------------- |
+| `npm run build` | Compila TypeScript a JavaScript (`dist/`)                   |
+| `npm start`     | Ejecuta el bot compilado                                    |
+| `npm run dev`   | Ejecuta el bot directamente con `ts-node` (para desarrollo) |
 
 ---
 
