@@ -44,8 +44,6 @@ El bot envía primero una **foto real del avión** (obtenida de Planespotters.ne
 
 🛫 Origen: LEVC
 🛬 Destino: LEBL
-
-🗺️ Ver en Flightradar24
 ```
 
 ---
@@ -167,7 +165,6 @@ plane-bot/
 - ✅ **Foto real del avión**: busca y envía una imagen del avión desde Planespotters.net (sin API key)
 - ✅ **Deduplicación inteligente**: no spamea. Si un avión sigue en zona, espera 30 minutos antes de volver a avisar
 - ✅ **Información de ruta**: intenta obtener aeropuerto de origen y destino automáticamente
-- ✅ **Enlace a Flightradar24**: cada mensaje incluye un link directo al vuelo
 - ✅ **Manejo de errores**: si falla alguna API o Telegram, el bot sigue funcionando y reintenta en el siguiente ciclo
 - ✅ **Limpieza automática**: borra aviones antiguos de memoria cada 2 horas para evitar fugas
 

@@ -1,4 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api';
+import { Readable } from 'stream';
 import { CONFIG } from './config';
 
 export function createBot(): TelegramBot {
@@ -32,6 +33,17 @@ export async function sendNotification(bot: TelegramBot, message: string): Promi
     });
 }
 
-export async function sendPhoto(bot: TelegramBot, imageUrl: string): Promise<void> {
-    await bot.sendPhoto(CONFIG.chatId, imageUrl);
+export async function sendPhoto(bot: TelegramBot, imageBuffer: Buffer, caption?: string): Promise<void> {
+    const stream = new Readable();
+    stream.push(imageBuffer);
+    stream.push(null);
+
+    await bot.sendPhoto(
+        CONFIG.chatId,
+        // @ts-ignore - node-telegram-bot-api acepta streams pero los tipos no lo reflejan bien
+        stream,
+        {
+            caption: caption || undefined,
+        }
+    );
 }

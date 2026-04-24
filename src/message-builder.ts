@@ -27,9 +27,5 @@ export function buildMessage(plane: Aircraft, route: RouteInfo): string {
         message += `🛬 *Destino:* ${route.destination}\n`;
     }
 
-    if (callsign !== 'Desconocido') {
-        message += `\n🗺️ [Ver en Flightradar24](https://www.flightradar24.com/${callsign})`;
-    }
-
     return message;
 }

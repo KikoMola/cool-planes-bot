@@ -4,7 +4,7 @@ import { isCoolPlane } from './filters';
 import { isInCooldown, markNotified } from './deduplication';
 import { buildMessage } from './message-builder';
 import { createBot, sendStartupMessage, sendNotification, sendPhoto } from './telegram-service';
-import { getAircraftImageUrl } from './image-service';
+import { getAircraftImage } from './image-service';
 import { Aircraft } from './types';
 
 async function processAndNotify(planes: Aircraft[]): Promise<void> {
@@ -29,13 +29,19 @@ async function processAndNotify(planes: Aircraft[]): Promise<void> {
 
         const route = await getFlightRoute(plane.hex, plane.flight);
         const message = buildMessage(plane, route);
-        const imageUrl = await getAircraftImageUrl(plane.hex);
+        const image = await getAircraftImage(plane.hex);
+
+        if (image) {
+            try {
+                const photoCaption = `📸 Foto por ${image.photographer}`;
+                await sendPhoto(bot, image.buffer, photoCaption);
+                console.log(`📸 Foto enviada: ${plane.flight?.trim() || plane.hex}`);
+            } catch (error) {
+                console.error(`❌ Error enviando foto a Telegram:`, error);
+            }
+        }
 
         try {
-            if (imageUrl) {
-                await sendPhoto(bot, imageUrl);
-                console.log(`📸 Foto enviada: ${plane.flight?.trim() || plane.hex}`);
-            }
             await sendNotification(bot, message);
             markNotified(plane.hex);
             console.log(`✅ Notificación enviada: ${plane.flight?.trim() || plane.hex}`);

@@ -5,6 +5,7 @@ export function getCardinalDirection(degrees: number | undefined): string {
     return directions[index];
 }
 
+
 export function getPlaneName(type: string): string {
     const names: Record<string, string> = {
         A380: 'Airbus A380',
