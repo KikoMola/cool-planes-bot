@@ -28,6 +28,8 @@ Este bot consulta cada **5 minutos** la API gratuita de [ADSB.lol](https://adsb.
 
 ## 📸 Ejemplo de notificación
 
+El bot envía primero una **foto real del avión** (obtenida de Planespotters.net) y luego el mensaje con los detalles:
+
 ```
 🛩️ ¡Avión molón detectado!
 
@@ -125,15 +127,26 @@ Esto muestra los aviones detectados por la API y te dice si alguno es "molón" s
 
 ```
 plane-bot/
-├── .env              ← Configuración privada (tokens, coordenadas)
-├── .env.example      ← Template de .env
-├── .gitignore        ← Lo que no se sube a git
-├── package.json      ← Dependencias y scripts
-├── tsconfig.json     ← Configuración de TypeScript
-├── README.md         ← Este archivo
+├── .env                   ← Configuración privada (tokens, coordenadas)
+├── .env.example           ← Template de .env
+├── .gitignore             ← Lo que no se sube a git
+├── .prettierrc            ← Configuración de Prettier
+├── .prettierignore        ← Lo que no formatea Prettier
+├── package.json           ← Dependencias y scripts
+├── tsconfig.json          ← Configuración de TypeScript
+├── README.md              ← Este archivo
 └── src/
-    ├── index.ts      ← Código principal del bot
-    └── dry-run.ts    ← Script de prueba sin Telegram
+    ├── index.ts           ← Punto de entrada y coordinación
+    ├── config.ts          ← Variables de entorno y validación
+    ├── types.ts           ← Interfaces TypeScript
+    ├── filters.ts         ← Filtros de aviones molones
+    ├── utils.ts           ← Helpers (dirección cardinal, nombres)
+    ├── deduplication.ts   ← Cooldown y memoria de notificaciones
+    ├── aircraft-service.ts ← API de ADSB.lol y rutas
+    ├── image-service.ts   ← API de Planespotters.net (fotos)
+    ├── message-builder.ts ← Constructor de mensajes de Telegram
+    ├── telegram-service.ts ← Envío de mensajes y fotos a Telegram
+    └── dry-run.ts         ← Script de prueba sin Telegram
 ```
 
 ---
@@ -151,10 +164,11 @@ plane-bot/
 ## 🧠 Características
 
 - ✅ **Detección en tiempo real** vía ADSB.lol (gratuito y sin API key)
+- ✅ **Foto real del avión**: busca y envía una imagen del avión desde Planespotters.net (sin API key)
 - ✅ **Deduplicación inteligente**: no spamea. Si un avión sigue en zona, espera 30 minutos antes de volver a avisar
 - ✅ **Información de ruta**: intenta obtener aeropuerto de origen y destino automáticamente
 - ✅ **Enlace a Flightradar24**: cada mensaje incluye un link directo al vuelo
-- ✅ **Manejo de errores**: si falla la API o Telegram, el bot sigue funcionando y reintenta en el siguiente ciclo
+- ✅ **Manejo de errores**: si falla alguna API o Telegram, el bot sigue funcionando y reintenta en el siguiente ciclo
 - ✅ **Limpieza automática**: borra aviones antiguos de memoria cada 2 horas para evitar fugas
 
 ---

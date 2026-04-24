@@ -31,3 +31,7 @@ export async function sendNotification(bot: TelegramBot, message: string): Promi
         disable_web_page_preview: false,
     });
 }
+
+export async function sendPhoto(bot: TelegramBot, imageUrl: string): Promise<void> {
+    await bot.sendPhoto(CONFIG.chatId, imageUrl);
+}
