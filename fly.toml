@@ -1,0 +1,11 @@
+app = 'cool-planes-bot'
+primary_region = 'mad'
+
+[build]
+
+[processes]
+  app = 'node dist/index.js'
+
+[[vm]]
+  size = 'shared-cpu-1x'
+  memory = '256mb'
